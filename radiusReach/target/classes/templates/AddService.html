@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<script>
+		function getLocation() {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(showPosition, showError);
+					} else {
+						alert("Geolocation is not supported by this browser.");
+					}
+				}
+
+				//funtion to retrieve location
+				function showPosition(position) {
+					var latitude = position.coords.latitude;
+					var longitude = position.coords.longitude;
+
+					// Using openstreetmap api
+					fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+						.then(response => response.json())
+						.then(data => {
+							if (data && data.address) {
+								document.forms["addserviceform"]["address2"].value = data.address.road || data.address.neighbourhood || '';
+								document.forms["addserviceform"]["city"].value = data.address.city || '';
+								document.forms["addserviceform"]["state"].value = data.address.state || '';
+								document.forms["addserviceform"]["pincode"].value = data.address.postcode || '';
+							}
+						})
+						.catch(error => {
+							console.error("Error fetching address:", error);
+						});
+				}
+
+				//handling errors
+				function showError(error) {
+					switch (error.code) {
+						case error.PERMISSION_DENIED:
+							alert("User denied the request for Geolocation.");
+							break;
+						case error.POSITION_UNAVAILABLE:
+							alert("Location information is unavailable.");
+							break;
+						case error.TIMEOUT:
+							alert("The request to get user location timed out.");
+							break;
+						case error.UNKNOWN_ERROR:
+							alert("An unknown error occurred.");
+							break;
+					}
+				}
+				
+				function validateForm() {
+							var serviceName=documnet.forms["addserviceform"]["name"].value.trim();
+							var price=documnet.forms["addserviceform"]["price"].value.trim();
+							var description=documnet.forms["addserviceform"]["description"].value.trim();
+							var phoneNumber=document.forms["addserviceform"]["phno"].value.trim();
+							var address1=document.forms["addserviceform"]["address1"].value.trim();
+							var city=document.forms["addserviceform"]["city"].value.trim();
+							var state=document.forms["addserviceform"]["state"].value.trim();
+							var pincode=document.forms["addserviceform"]["pincode"].value.trim();
+							
+
+							if (phoneNumber === ""||address1 === ""||city === ""||state === ""||pincode === "") {
+								alert("Fill all required fields");
+								return false; // Prevents form submission
+							}
+							return true; // Allows form submission
+						}
+
+	 </script>
+
+	<style>
+		/* General styling */
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+
+		/* Header styling */
+		.header {
+			height: 65px;
+			background: #DB5227;
+			color: white;
+			padding: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.header .logo {
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.header a {
+			font-family: Garamond;
+			font-size: 16px;
+			color: white;
+			text-decoration: none;
+			margin-right: 20px;
+		}
+
+		.header a:hover {
+			text-decoration: underline;
+		}
+
+		/* Form styling */
+		form {
+			margin: 50px auto;
+			width: 60%;
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		fieldset {
+			border: none;
+			padding: 20px;
+			margin: 30px 0;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		label {
+			font-family: Garamond;
+			font-size: 18px;
+			color: #DB5227;
+		}
+
+		input[type="text"],
+		input[type="number"] {
+			width: 90%;
+			padding: 8px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		input[type="submit"] {
+			background-color: #DB5227;
+			color: white;
+			padding: 10px 30px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #8E2C00;
+		}
+
+		button {
+			background-color: #DB5227;
+			color: white;
+			border: none;
+			padding: 10px 15px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #B13100;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Header -->
+	<div class="header">
+		<div class="logo">
+			<b>BookYourServices</b>
+		</div>
+		<div>
+			<a href="/forwardToDashboard">Home</a>
+			<a href="/forwardToMyServices">Your Services</a>
+			<a href="/forwardToBookings">My Bookings</a>
+			<a href="/forwardToRequests">Requests</a>
+			<a href="/forwardToScheduledServices">Scheduled Services</a>
+			<a href="/logout">Logout</a>
+		</div>
+	</div>
+
+	<!-- Add Service Form -->
+	<center>
+		<form name="addserviceform" method="POST" action="/addService" onsubmit="return validateForm()">
+			<fieldset>
+				<legend
+					style="font-family:garamond;font-size:24px;color:#DB5227;text-decoration: none;">
+					Service Information
+				</legend>
+				<table>
+					<tr>
+						<td><label>Service:</label></td>
+						<td>
+							<input type="text" name="name" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Price:</label></td>
+						<td>
+							<input type="number" name="price" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Description:</label></td>
+						<td>
+							<input type="text" name="description">
+						</td>
+					</tr>
+					<tr>
+						<td><label>Phone Number:</label></td>
+						<td>
+							<input type="number" name="phno" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Address Line 1:</label></td>
+						<td>
+							<input type="text" name="address1" size="50" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Address Line 2:</label></td>
+						<td>
+							<input type="text" name="address2" size="50">
+						</td>
+					</tr>
+					<tr>
+						<td><label>City:</label></td>
+						<td>
+							<input type="text" name="city" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>State:</label></td>
+						<td>
+							<input type="text" name="state" required>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Pincode:</label></td>
+						<td>
+							<input type="number" name="pincode" required>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button type="button" onclick="getLocation()">Use Current Location</button>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="submit" value="Add Service">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</center>
+</body>
+
+</html>

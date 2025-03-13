@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <style>
+        /* General styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        #usable-service {
+            padding: 20px;
+        }
+
+		h2 {
+				color: #DB5227;
+				font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+				font-size: 30px;
+		           text-align: center;
+		           margin-bottom: 20px;
+		       }
+
+        /* Header styling */
+        .header {
+            height: 65px;
+            background: #DB5227;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header a {
+            font-family: Garamond;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        fieldset {
+            border: none;
+            padding: 20px;
+            margin: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            width: 40%;
+        }
+
+        /* Styles for the service boxes */
+        .service-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .service-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-box p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .service-box strong {
+            color: #B13100;
+        }
+
+        /* Styles for the Book button */
+        .book-btn {
+            background-color: #B13100;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .book-btn:hover {
+            background-color: #8E2C00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <b>BookYourServices</b>
+        </div>
+        <div>
+            <a th:href="@{/forwardToAddService}">Add Service</a>
+            <a th:href="@{/forwardToMyServices}">Your Services</a>
+            <a th:href="@{/forwardToBookings}">My Bookings</a>
+            <a th:href="@{/forwardToRequests}">Requests</a>
+            <a th:href="@{/forwardToScheduledServices}">Scheduled Services</a>
+			<a th:href="@{/forwardToPreviousBookings}">Previous Bookings</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+
+    <!-- Usable Services Section -->
+    <br><br>
+    <div id="usable-service" class="section">
+        <div class="section-content">
+            <h2>Available Services</h2>
+            <fieldset>
+                <div th:if="${usableServices != null and #lists.size(usableServices) > 0}">
+                    <div class="service-boxes">
+                        <div th:each="service: ${usableServices}" class="service-box">
+                            <p><strong>Service:</strong> <span th:text="${service.serviceName}"></span></p>
+                            <p><strong>Price:</strong> <span th:text="${service.price}"></span></p>
+                            <p><strong>Contact:</strong> <span th:text="${service.phoneNumber}"></span></p>
+                            <p><strong>Address:</strong> <span th:text="${service.address}"></span></p>
+
+                            <form th:action="@{/forwardToBookingForm}" method="post">
+                                <input type="hidden" name="serviceId" th:value="${service.id}" />
+                                <button type="submit" class="book-btn">Book</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${usableServices == null or #lists.isEmpty(usableServices)}">
+                    <br><br>
+                    <span style="font-size: 24px; color: #DB5227; margin: 400px;">No Services Available!</span>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>
