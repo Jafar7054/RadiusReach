@@ -16,6 +16,7 @@
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/security/SecurityConfig.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/CustomAdditionalDetailsService.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/CustomBookingService.java
+/workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/CustomServiceDetailsService.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/CustomUserDetailsService.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/MailService.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/service/UserConfigurationDetailsService.java

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fugaz+One&display=swap" rel="stylesheet">
+	<title>Login</title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+
+		form {
+			height: 420px;
+			width: 500px;
+			background-color: rgba(255, 255, 255, 0.13);
+			position: absolute;
+			transform: translate(-50%, -50%);
+			top: 50%;
+			left: 70%;
+			border-radius: 10px;
+			backdrop-filter: blur(10px);
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+			padding: 50px 35px;
+		}
+
+		.container {
+			text-align: center;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			width: 300px;
+		}
+		
+		/* Lottie animation container aligned to the left */
+				.lottie-container {
+					flex: 1; /* Let the container take up 1 portion of space */
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 100%; /* Make it span the full height */
+				}
+
+				.lottie-container dotlottie-player {
+					width: 80%; /* Adjust the width of the animation */
+					height: 100%; /* Maintain aspect ratio */
+				}
+
+		.content {
+			position: relative;
+			z-index: 2;
+		}
+
+		/* Styling for the header and form content */
+		.header {
+			font-family: "Fugaz One", serif;
+			  font-weight: 400;
+			  font-style: italic;
+			height: 130px;
+			
+			backdrop-filter: blur(10px);
+			font-size: 50px;
+			color: #DB5227;
+			padding-top: 20px;
+			padding-left: 10px;
+		}
+
+		.header a {
+			font-family: Garamond;
+			font-size: 34px;
+			color: white;
+			text-decoration: none;
+		}
+
+		fieldset {
+			border: none;
+			padding: 20px;
+			margin: 30px;
+			background-color: rgba(255, 255, 255, 0.8);
+			/* Light background for form */
+			color: #333;
+			width: 40%
+		}
+
+		table {
+			width: 100%;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 90%;
+			padding: 8px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		input[type="submit"] {
+			background-color: #DB5227;
+			color: white;
+			padding: 10px 30px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #B13100;
+		}
+
+
+		#background-video {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: 100vh;
+					z-index: -1;
+					
+				}
+				
+				
+
+		.login-button {
+			display: inline-block;
+			padding: 10px 40px;
+			margin-top: 10px;
+			margin-left: 20px;
+			background-color: #db4437;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			text-decoration: none;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.login-button:hover {
+			background-color: #c33d2e;
+		}
+		
+		.social{
+		  margin-top: 10px;
+		  justify-content: center;
+		  display: flex;
+		  
+		}
+		.social div{
+		  background: red;
+		  width: 150px;
+		  border-radius: 3px;
+		  padding: 5px 0px 10px 5px;
+		  background-color: rgba(255,255,255,0.27);
+		  color: #eaf0fb;
+		  text-align: center;
+		}
+		.social div:hover{
+		  background-color: rgba(255,255,255,0.47);
+		}
+
+		h1 {
+			font-size: 24px;
+			margin-bottom: 10px;
+			color: #333;
+		}
+
+		p {
+			color: #666;
+			font-size: 14px;
+		}
+	</style>
+	<script >
+
+		window.onload = function () {
+		            var message = document.getElementById("alertMessage").value;
+		            if (message) {
+		                alert(message);
+		            }
+		        };
+				
+		var buttonClicked = "";
+
+		// Set which button is clicked and what will be the form mapping url
+		function setButtonAndAction(action) {
+			//Will help in validateForm()
+			buttonClicked = action;
+
+		}
+		function validateForm() {
+			var email = document.forms["loginForm"]["email"].value.trim();//Fetching eamil removing extra front and back spaces
+			var password = document.forms["loginForm"]["password"].value.trim();//Fetching password removing extra front and back spaces
+
+			// Only validate when login is clicked
+			if (buttonClicked === "LogIn") {
+				if (email === "" || password === "") {
+					alert("Email and Password Required");
+					return false; // Prevent form submission if login form is incomplete
+				}
+			}
+			return true; // Allow form submission
+		}
+	</script>
+	<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+</head>
+
+<body>
+	
+	<div class="lottie-container">
+	
+	<dotlottie-player src="https://lottie.host/b5ed7ae9-2299-47fa-8557-655f3484d109/xNXBhEWBRW.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+	
+	</div>
+	<div>
+		<input type="hidden" id="alertMessage" th:value="${signUpSuccess}">
+		<form name="loginForm" method="post" action="/login" onsubmit="return validateForm()">
+			<div class="header">
+				WELCOME TO BOOKYOURSERVICE
+			</div><br><br><br>
+			<table>
+				<tr>
+					<td><label
+							style="font-family:garamond;font-size:30px;margin:0 0 0 10px;color:#DB5227;text-decoration: none;">Email:</label>
+					</td>
+					<td>
+						<input type="text" name="email"><br>
+					</td>
+				</tr>
+				<tr>
+					<td><label
+							style="font-family:garamond;font-size:30px;margin:0 0 0 10px;color:#DB5227;text-decoration: none;">Password:</label>
+					</td>
+					<td>
+						<input type="password" name="password"><br>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" name="submit" value="LogIn" onclick="setButtonAndAction('LogIn')">&nbsp;
+						<input type="submit" name="submit" value="SignUp" onclick="setButtonAndAction('SignUp')">&nbsp;
+					</td>
+					<td>&nbsp;</td>
+
+				</tr>
+			</table>
+			<div class="social">
+				<a th:href="@{/oauth2/authorization/google}" class="login-button">Google</a>
+			</div>
+		</form>
+	</div>
+
+
+
+</body>
+
+</html>

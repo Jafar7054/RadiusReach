@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script>
+        function validateForm() {
+            var date = document.forms["bookingForm"]["date"].value.trim();
+            var time = document.forms["bookingForm"]["time"].value.trim();
+
+            if (date === "" || time === "") {
+                alert("Please fill all required fields.");
+                return false; // Prevents form submission
+            }
+            return true; // Allows form submission
+        }
+    </script>
+
+    <style>
+        /* General styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Header styling */
+        .header {
+            height: 65px;
+            background: #DB5227;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header a {
+            font-family: Garamond;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form styling */
+        form {
+            margin: 50px auto;
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        fieldset {
+            border: none;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        legend {
+            font-family: Garamond;
+            font-size: 24px;
+            color: #DB5227;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        label {
+            font-family: Garamond;
+            font-size: 18px;
+            color: #DB5227;
+        }
+
+        input[type="date"],
+        input[type="time"] {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #DB5227;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #8E2C00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <b>BookYourServices</b>
+        </div>
+        <div>
+            <a th:href="@{/forwardToDashboard}">Home</a>
+            <a th:href="@{/forwardToMyServices}">Your Services</a>
+            <a th:href="@{/forwardToBookings}">My Bookings</a>
+            <a th:href="@{/forwardToRequests}">Requests</a>
+            <a th:href="@{/forwardToScheduledServices}">Scheduled Services</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+
+    <center>
+        <form name="bookingForm" method="POST" th:action="@{/book}" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Booking Details</legend>
+                <table>
+                    <tr>
+                        <td><label>Date:<span class="required">*</span></label></td>
+                        <td><input type="date" name="date"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Time:<span class="required">*</span></label></td>
+                        <td><input type="time" name="time"></td>
+                    </tr>
+                    <input type="hidden" th:name="serviceId" th:value="${serviceBooked.id}" />
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="submitBooking" value="Submit"></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </center>
+</body>
+
+</html>
