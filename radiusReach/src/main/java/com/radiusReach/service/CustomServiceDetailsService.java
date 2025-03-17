@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.radiusReach.entities.Services;
 import com.radiusReach.repository.ServicesRepository;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

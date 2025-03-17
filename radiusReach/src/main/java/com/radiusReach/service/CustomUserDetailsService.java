@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.radiusReach.entities.User;
 import com.radiusReach.repository.UserrRepository;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

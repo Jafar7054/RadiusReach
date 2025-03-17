@@ -11,7 +11,7 @@ import com.radiusReach.entities.User;
 import com.radiusReach.entities.UserAdditionalDetails;
 import com.radiusReach.repository.UserAdditionalDetailsRepository;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

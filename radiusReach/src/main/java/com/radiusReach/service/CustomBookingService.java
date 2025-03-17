@@ -12,7 +12,7 @@ import com.radiusReach.entities.Booking;
 import com.radiusReach.entities.Services;
 import com.radiusReach.repository.BookingRepository;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
