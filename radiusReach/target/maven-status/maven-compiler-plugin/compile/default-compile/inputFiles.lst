@@ -3,11 +3,11 @@
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/controller/HomeController.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/controller/ServiceController.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/controller/UserProfileController.java
+/workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/customException/CustomDatabaseException.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/entities/Booking.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/entities/Services.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/entities/User.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/entities/UserAdditionalDetails.java
-/workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/exception/CustomDatabaseException.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/repository/BookingRepository.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/repository/ServicesRepository.java
 /workspaces/RadiusReach/radiusReach/src/main/java/com/radiusReach/repository/UserAdditionalDetailsRepository.java
