@@ -1,9 +1,9 @@
-package com.bookYouServices.repository;
+package com.radiusReach.repository;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bookYouServices.entities.UserAdditionalDetails;
+import com.radiusReach.entities.UserAdditionalDetails;
 
 import jakarta.persistence.EntityNotFoundException;
 

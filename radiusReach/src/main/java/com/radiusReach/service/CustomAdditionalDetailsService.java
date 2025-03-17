@@ -1,4 +1,4 @@
-package com.bookYouServices.service;
+package com.radiusReach.service;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.bookYouServices.entities.Services;
-import com.bookYouServices.entities.User;
-import com.bookYouServices.entities.UserAdditionalDetails;
-import com.bookYouServices.repository.UserAdditionalDetailsRepository;
+import com.radiusReach.entities.Services;
+import com.radiusReach.entities.User;
+import com.radiusReach.entities.UserAdditionalDetails;
+import com.radiusReach.repository.UserAdditionalDetailsRepository;
 
 import customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;

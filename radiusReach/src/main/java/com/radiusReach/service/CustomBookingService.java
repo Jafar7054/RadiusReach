@@ -1,4 +1,4 @@
-package com.bookYouServices.service;
+package com.radiusReach.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.bookYouServices.entities.Booking;
-import com.bookYouServices.entities.Services;
-import com.bookYouServices.repository.BookingRepository;
+import com.radiusReach.entities.Booking;
+import com.radiusReach.entities.Services;
+import com.radiusReach.repository.BookingRepository;
 
 import customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;

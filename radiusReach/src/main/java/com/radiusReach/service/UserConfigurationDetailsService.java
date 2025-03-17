@@ -1,4 +1,4 @@
-package com.bookYouServices.service;
+package com.radiusReach.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.bookYouServices.entities.User;
-import com.bookYouServices.repository.UserrRepository;
+import com.radiusReach.entities.User;
+import com.radiusReach.repository.UserrRepository;
 
 @Service
 public class UserConfigurationDetailsService implements UserDetailsService{

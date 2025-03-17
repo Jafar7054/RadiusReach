@@ -1,11 +1,11 @@
-package com.bookYouServices.service;
+package com.radiusReach.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.bookYouServices.entities.User;
-import com.bookYouServices.repository.UserrRepository;
+import com.radiusReach.entities.User;
+import com.radiusReach.repository.UserrRepository;
 
 import customException.CustomDatabaseException;
 import lombok.extern.slf4j.Slf4j;

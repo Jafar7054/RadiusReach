@@ -1,9 +1,9 @@
-package com.bookYouServices.repository;
+package com.radiusReach.repository;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bookYouServices.entities.User;
+import com.radiusReach.entities.User;
 
 /**
  * Repository interface for managing User entities with JPA query methods.

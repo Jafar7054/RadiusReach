@@ -1,4 +1,4 @@
-package com.bookYouServices.security;
+package com.radiusReach.security;
 
 import java.util.Map;
 
@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.bookYouServices.entities.User;
-import com.bookYouServices.repository.UserrRepository;
+import com.radiusReach.entities.User;
+import com.radiusReach.repository.UserrRepository;
 
 
 /**

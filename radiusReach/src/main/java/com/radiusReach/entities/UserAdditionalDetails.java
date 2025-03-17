@@ -1,4 +1,4 @@
-package com.bookYouServices.entities;
+package com.radiusReach.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

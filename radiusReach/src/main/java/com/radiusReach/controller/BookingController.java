@@ -1,4 +1,4 @@
-package com.bookYouServices.controller;
+package com.radiusReach.controller;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bookYouServices.entities.Booking;
-import com.bookYouServices.entities.Services;
-import com.bookYouServices.entities.User;
-import com.bookYouServices.service.CustomBookingService;
-import com.bookYouServices.service.CustomServiceDetailsService;
+import com.radiusReach.entities.Booking;
+import com.radiusReach.entities.Services;
+import com.radiusReach.entities.User;
+import com.radiusReach.service.CustomBookingService;
+import com.radiusReach.service.CustomServiceDetailsService;
 
 import customException.CustomDatabaseException;
 import jakarta.servlet.http.HttpServletRequest;

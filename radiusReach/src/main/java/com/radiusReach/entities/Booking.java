@@ -1,4 +1,4 @@
-package com.bookYouServices.entities;
+package com.radiusReach.entities;
 
 import java.util.Comparator;
 

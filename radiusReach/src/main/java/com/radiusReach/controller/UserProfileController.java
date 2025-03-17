@@ -1,13 +1,13 @@
-package com.bookYouServices.controller;
+package com.radiusReach.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bookYouServices.entities.User;
-import com.bookYouServices.entities.UserAdditionalDetails;
-import com.bookYouServices.service.CustomAdditionalDetailsService;
+import com.radiusReach.entities.User;
+import com.radiusReach.entities.UserAdditionalDetails;
+import com.radiusReach.service.CustomAdditionalDetailsService;
 
 import customException.CustomDatabaseException;
 import jakarta.servlet.http.HttpServletRequest;
