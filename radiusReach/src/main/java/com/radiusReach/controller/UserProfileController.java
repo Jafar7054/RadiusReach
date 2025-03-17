@@ -9,7 +9,7 @@ import com.radiusReach.entities.User;
 import com.radiusReach.entities.UserAdditionalDetails;
 import com.radiusReach.service.CustomAdditionalDetailsService;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 

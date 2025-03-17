@@ -16,7 +16,7 @@ import com.radiusReach.service.CustomBookingService;
 import com.radiusReach.service.CustomServiceDetailsService;
 import com.radiusReach.service.CustomUserDetailsService;
 
-import customException.CustomDatabaseException;
+import com.radiusReach.customException.CustomDatabaseException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
