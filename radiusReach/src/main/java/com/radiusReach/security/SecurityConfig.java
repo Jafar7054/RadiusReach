@@ -46,8 +46,12 @@ public class SecurityConfig {
 	            )
 	            .oauth2Login(oauth -> oauth
 	                .loginPage("/") // Custom login page for OAuth2
-	                .defaultSuccessUrl("/loggedIn",true) // Redirect here after successful OAuth2 login
-	            )
+	                //.defaultSuccessUrl("/loggedIn",true) // Redirect here after successful OAuth2 login
+					.successHandler((request, response, authentication) -> 
+					{
+                		response.sendRedirect("/loggedIn"); // Explicitly redirect
+					}
+	            ))
 	            .logout(logout -> logout
 	                .logoutUrl("/logout")
 	                .logoutSuccessUrl("/")
